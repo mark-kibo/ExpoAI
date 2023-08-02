@@ -1,6 +1,4 @@
 # ExpoAI
-# AI Image Generator - Readme
-
 ![AI Image Generator](https://th.bing.com/th/id/R.eadaed4d488d61fe729b6434936092ea?rik=MA5R0KWJp5bc8Q&riu=http%3a%2f%2fblogger.io%2fwp-content%2fuploads%2f2020%2f07%2fAI-1.jpg&ehk=5GQ37AT12mzLgjTQj2NuYmz1yagzw4bHXyNGq2tTjYw%3d&risl=&pid=ImgRaw&r=0)
 
 Welcome to the AI Image Generator project! This application allows graphic designers and creative artists to generate unique images using the power of artificial intelligence. By providing either input text or uploading an image, you can obtain a variety of output images or edited versions in various styles. The project is built using JavaScript (Js) and HTML and utilizes the DALL-E API for image generation.
