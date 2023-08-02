@@ -79,7 +79,7 @@ form button{
     position: absolute;
     top: 86%;
     margin: 5px 5px 5px 5px;
-    padding: 0 5px;
+    padding: 5px 10px;
     border-radius: 2px;
     border: 0;
     outline: 0;
@@ -93,6 +93,14 @@ form button{
 a{
     text-decoration: none;
 }
+
+
+#search-result button a.fa-solid{
+    font-size: 30px;
+    padding: 10px 10px;
+}
+
+
 
 
 
