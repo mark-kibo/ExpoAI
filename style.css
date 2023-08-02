@@ -58,11 +58,10 @@ form button{
 }
 
 #search-result{
-    width: 80%;
+    width: 400px;
     margin: 100px auto 50px;
-    display: grid;
-    grid-template-columns:  1fr 1fr 1fr;
-    grid-gap: 40px;
+    display:flex;
+    justify-content: center;
 }
 
 #search-result img{
@@ -72,33 +71,27 @@ form button{
     object-fit: cover;
     border-radius: 10px; 
     cursor: pointer;  
+   
 }
 
 
-#search-result button{
+#search-result a{
     position: absolute;
+    left:35%;
     top: 86%;
-    margin: 5px 5px 5px 5px;
+    margin: 5px 5px 2px 5px;
     padding: 5px 10px;
     border-radius: 2px;
     border: 0;
     outline: 0;
     background: #878b8a;
-}
-
-#search-result button:hover{
-    background:#12dcac ;
-}
-
-a{
     text-decoration: none;
 }
 
-
-#search-result button a.fa-solid{
-    font-size: 30px;
-    padding: 10px 10px;
+#search-result a:hover{
+    background:#12dcac ;
 }
+
 
 
 

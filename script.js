@@ -1,6 +1,4 @@
-const apiKey="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"
-
-
+const apiKey="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"
 
 // dalle-api import images
 const getImages = async (data)=>{
@@ -14,6 +12,9 @@ const getImages = async (data)=>{
     }
     try{
         const response=await fetch("https://api.openai.com/v1/images/generations", options)
+        if(response.status != 200){
+            throw new Error("inavlid post")
+        }
         const data= await response.json()
         return data
 
@@ -30,19 +31,22 @@ let form=document.querySelector("form")
 form.addEventListener("submit", (e)=>{
     e.preventDefault()
     let input=e.target.querySelector("input")
+    console.log(input.value)
     let apiBody={
-        prompt:input.value,
-        n:3,
-        size:"1024x1024"
+        prompt:`${input.value}`,
+        n:4,
+        size:"512x512"
     }
 
     // fetch our data from our api
     getImages(apiBody)
     .then(data=>{
+        console.log(data)
         handlePrompt(data)
     }).catch(e=>console.log(e))
 
     // reset our form
+    form.reset()
 
 })
 
@@ -55,26 +59,10 @@ function handlePrompt(data){
     // get our search result div
     // console.log(data.data)
     let searchResult=document.getElementById("search-result")
-    data.data.map(element => {
-        // create image tag
-        // let img=document.createElement('img')
-        // img.src=element.url
-        // img.alt="image"
-        // let downloadButton =document.createElement('button')
-        // let a=document.createElement('a')
-        // a.href=element.url
-        // downloadButton.appendChild(a)
-        // // add download event listener on our download button to download image
-        // downloadButton.addEventListener("click", (e)=>{
-        //     a.setAttribute('download', 'true')
-        // })
-
-        // // add our tags to the page
-        // searchResult.appendChild(img)
-        // searchResult.appendChild(downloadButton)        
+    data.data.map(element => {   
         searchResult.innerHTML=`
         <img src="${element.url}" alt="image" srcset="">
-        <button><a href="./images/R.jpg" download="filename.jpg"><img src="./images/R.jpg" alt="Image" hidden><i class="fa-light fa-download"></i></a></button>
+        <a href="${element.url}" download="expoAi.jpg" target="_blank"><img src="${element.url}" alt="Image" hidden><i class="fa-solid fa-download"></i></a>
         `
     });
 }
