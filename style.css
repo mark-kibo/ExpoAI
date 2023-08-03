@@ -112,8 +112,8 @@ form button{
 }
 .loader::after{
     content: "";
-    width: 75px;
-    height: 75px;
+    width: 30px;
+    height: 30px;
     border: 15px solid #dddddd;
     border-top-color: aquamarine;
     border-radius: 50%;
@@ -122,7 +122,10 @@ form button{
 
 @keyframes loading {
     from{
-        transform: rotate();
+        transform: rotate(0turn);
+    }
+    to{
+        transform: rotate(1turn);
     }
     
 }
