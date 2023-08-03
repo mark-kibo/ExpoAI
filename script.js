@@ -37,13 +37,24 @@ form.addEventListener("submit", (e)=>{
         n:4,
         size:"512x512"
     }
-    // get  loader element
-    const loader=document.querySelector(".loader");
-
+    // page element
+    let searchResult=document.getElementById("search-result")
+    // create loader element
+    const loader=document.createElement("div");
+    loader.classList.add('loader')
+    // append our loader
+    searchResult.appendChild(loader)
     // fetch our data from our api
     getImages(apiBody)
     .then(data=>{
+        if (data){
+            loader.classList.add("loader-hidden")
+            loader.addEventListener("transitionend", ()=>{
+                document.body.removeChild("loader");
+            })
+        }
         // remove loader
+
         console.log(data)
         handlePrompt(data)
     }).catch(e=>console.log(e))
