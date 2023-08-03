@@ -62,7 +62,7 @@ form.addEventListener("submit", (e)=>{
 
         console.log(data)
         handlePrompt(data)
-    }).catch(e=>console.log(e))
+    }).catch(e=>alert("invalid api key "))
 
     // reset our form
     form.reset()
