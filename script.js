@@ -1,4 +1,6 @@
-const apiKey="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"
+
+// this is just a dummy api key,, for the project to work you need a valid Dalle-api key
+const apiKey="sk-Y4sbr92bbAysM1shwe0XT3BlbkFJcrZP1kgXAICVb2d60"
 
 // dalle-api import images
 const getImages = async (data)=>{
