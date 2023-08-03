@@ -1,4 +1,4 @@
-const apiKey="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"
+// const apiKey="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"
 
 // dalle-api import images
 const getImages = async (data)=>{
