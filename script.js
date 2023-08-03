@@ -37,10 +37,13 @@ form.addEventListener("submit", (e)=>{
         n:4,
         size:"512x512"
     }
+    // get  loader element
+    const loader=document.querySelector(".loader");
 
     // fetch our data from our api
     getImages(apiBody)
     .then(data=>{
+        // remove loader
         console.log(data)
         handlePrompt(data)
     }).catch(e=>console.log(e))
