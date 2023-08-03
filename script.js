@@ -1,4 +1,4 @@
-// const apiKey="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"
+const apiKey="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"
 
 // dalle-api import images
 const getImages = async (data)=>{
@@ -34,7 +34,7 @@ form.addEventListener("submit", (e)=>{
     console.log(input.value)
     let apiBody={
         prompt:`${input.value}`,
-        n:4,
+        n:3,
         size:"512x512"
     }
     // page element
@@ -47,8 +47,11 @@ form.addEventListener("submit", (e)=>{
     // fetch our data from our api
     getImages(apiBody)
     .then(data=>{
+        // on getting the data remove loader
         if (data){
             loader.classList.add("loader-hidden")
+            
+            // after 0.75s the loader is removed dynamically
             loader.addEventListener("transitionend", ()=>{
                 document.body.removeChild("loader");
             })
@@ -74,9 +77,27 @@ function handlePrompt(data){
     // console.log(data.data)
     let searchResult=document.getElementById("search-result")
     data.data.map(element => {   
-        searchResult.innerHTML=`
-        <img src="${element.url}" alt="image" srcset="">
-        <a href="${element.url}" download="expoAi.jpg" target="_blank"><img src="${element.url}" alt="Image" hidden><i class="fa-solid fa-download"></i></a>
-        `
+        let img=document.createElement('img')
+        img.src=element.url
+        img.alt="result image"
+        let downloadButton=document.createElement("button")
+        downloadButton.innerHTML=`<i class="fa-solid fa-download"></i>`
+
+        // add download event listener
+        downloadButton.addEventListener("click", async ()=>{
+            try{
+                const response= await fetch(element.url);
+                const file= await response.blob();
+                let link =document.createElement("a")
+                link.href =  window.URL.createObjectURL(file);
+                link.download= new Date().getTime();
+                link.click();
+            }catch(e){
+               alert("failed to download")
+            }
+        })
+        searchResult.appendChild(img)
+        searchResult.appendChild(downloadButton)  
     });
 }
+
