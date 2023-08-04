@@ -1,7 +1,7 @@
 
 // import our environment variables from config .js file
 // require("dotenv").config();
-import API_KEY from "./config";
+import API_KEY from "./new";
 const apiKey =API_KEY;
 
 // dalle-api import images
