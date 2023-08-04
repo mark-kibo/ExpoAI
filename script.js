@@ -1,7 +1,7 @@
 
 // import our environment variables from config .js file
 // require("dotenv").config();
-const apiKey = process.env.API_KEY;
+const apiKey =config.API_KEY;
 
 // dalle-api import images
 const getImages = async (data)=>{
@@ -94,31 +94,19 @@ function handlePrompt(data){
         downloadButton.innerHTML=`<i class="fa-solid fa-download"></i>`
 
         // add download event listener
-        // contributions on how to implement this wll be helpful, since it does not download the file onclick
-        // downloadButton.addEventListener("click", async ()=>{
-        //     try{
-        //         const response= await fetch(element.url);
-        //         const file= await response.blob();
-        //         let link =document.createElement("a")
-        //         link.href =  window.URL.createObjectURL(file);
-        //         link.download= new Date().getTime();
-        //         link.click();
-        //     }catch(e){
-        //        alert("failed to download")
-        //     }
-        // })
-
-        // Simpler download buttn event listener
-        downloadButton.addEventListener("click", async () => {
-            try {
-                const link = document.createElement("a");
-                link.href = element.url; // Use the original image URL directly
-                link.download = ""; // Set an empty value for the 'download' attribute to maintain the original filename
+        download button.addEventListener("click", async ()=>{
+         try {
+                const response = await fetch(element.url, {mode:"no-cors"});
+                const file = await response.blob();
+                let link = document.createElement("a");
+                link.href = window.URL.createObjectURL(file);
+                link.download = "image.png"; // Set a default filename or use the image's actual filename if available
                 link.click();
-            } catch (e) {
-                alert("Failed to download");
+            } catch (error) {
+                console.error("Error during fetch:", error);
+                alert("Failed to download image.");
             }
-        });
+        })   
 
         searchResult.appendChild(img)
         searchResult.appendChild(downloadButton)  
