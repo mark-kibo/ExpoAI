@@ -63,7 +63,14 @@ form.addEventListener("submit", (e)=>{
 
         console.log(data)
         handlePrompt(data)
-    }).catch(e=>alert("invalid api key "))
+    }).catch(e=>{
+            alert("invalid api key ")
+         l   loader.classList.add("loader-hidden")
+            
+            // after 0.75s the loader is removed dynamically
+            loader.addEventListener("transitionend", ()=>{
+                document.body.removeChild("loader");
+            })})
 
     // reset our form
     form.reset()
