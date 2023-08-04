@@ -94,18 +94,32 @@ function handlePrompt(data){
         downloadButton.innerHTML=`<i class="fa-solid fa-download"></i>`
 
         // add download event listener
-        downloadButton.addEventListener("click", async ()=>{
-            try{
-                const response= await fetch(element.url);
-                const file= await response.blob();
-                let link =document.createElement("a")
-                link.href =  window.URL.createObjectURL(file);
-                link.download= new Date().getTime();
+        // contributions on how to implement this wll be helpful, since it does not download the file onclick
+        // downloadButton.addEventListener("click", async ()=>{
+        //     try{
+        //         const response= await fetch(element.url);
+        //         const file= await response.blob();
+        //         let link =document.createElement("a")
+        //         link.href =  window.URL.createObjectURL(file);
+        //         link.download= new Date().getTime();
+        //         link.click();
+        //     }catch(e){
+        //        alert("failed to download")
+        //     }
+        // })
+
+        // Simpler download buttn event listener
+        downloadButton.addEventListener("click", async () => {
+            try {
+                const link = document.createElement("a");
+                link.href = element.url; // Use the original image URL directly
+                link.download = ""; // Set an empty value for the 'download' attribute to maintain the original filename
                 link.click();
-            }catch(e){
-               alert("failed to download")
+            } catch (e) {
+                alert("Failed to download");
             }
-        })
+        });
+
         searchResult.appendChild(img)
         searchResult.appendChild(downloadButton)  
     });
