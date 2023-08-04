@@ -1,8 +1,7 @@
-
 // import our environment variables from config .js file
 // require("dotenv").config();
-import API_KEY from "./new";
-const apiKey =API_KEY;
+
+const apiKey =config.ApiKey;
 
 // dalle-api import images
 const getImages = async (data)=>{
@@ -95,7 +94,7 @@ function handlePrompt(data){
         downloadButton.innerHTML=`<i class="fa-solid fa-download"></i>`
 
         // add download event listener
-        download button.addEventListener("click", async ()=>{
+        downloadButton.addEventListener("click", async ()=>{
          try {
                 const response = await fetch(element.url, {mode:"no-cors"});
                 const file = await response.blob();
