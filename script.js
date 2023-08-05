@@ -100,7 +100,7 @@ function handlePrompt(data){
                 const file = await response.blob();
                 let link = document.createElement("a");
                 link.href = window.URL.createObjectURL(file);
-                link.download = "image.png"; // Set a default filename or use the image's actual filename if available
+                link.download = "image.jpeg"; // Set a default filename or use the image's actual filename if available
                 link.click();
             } catch (error) {
                 console.error("Error during fetch:", error);
