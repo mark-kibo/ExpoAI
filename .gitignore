@@ -1,5 +1,6 @@
 .env
-new.js
 node_modules
+dist
+.cache
 
 
